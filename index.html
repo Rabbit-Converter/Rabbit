@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Zawgyi to Unicode</title>
+<meta charset="utf-8"/>
+<script src="uni2zg.js"></script>
+<script src="zg2uni.js"></script>
+</head>
+<body>
+<header>
+<img src="rabbit_100.png" align="middle">
+<h2 style="display:inline;font-family:Helvetica,Arial,sans-serif;padding-left:5px">Rabbit</h2>
+</header>
+
+<h3 id="cFont">Unicode Text</h3>
+<textarea rows="10" cols="10" id="sample" style="width:100%;font-size:18px;font-family:'MON3 Anonta 1'">သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ်ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေးဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။
+
+ယေဓမ္မာ ဟေတုပ္ပဘဝါ တေသံ ဟေတုံ တထာဂတော အာဟ တေသဉ္စ ယောနိရောဓေါ ဧဝံ ဝါဒီ မဟာသမဏော။
+
+(မြန်မာပြန်)
+
+မြတ်စွာဘုရားရှင်သည် ရှေးကပြုခဲ့ဖူးသော အကြောင်းတရားကြောင့် ဖြစ်ပေါ်လာကြသော အကျိုးတရားကို ဟောကြားတော်မူသည်။
+
+ထိုအကြောင်းတရားတို့၏ ချုပ်ငြိမ်းရာတရားတို့ကိုလည်း ဟောတော်မူ၏။
+
+ရဟန်းကြီးဖြစ်သော ဗုဒ္ဓမြတ်စွာဘုရားသည် ဤသို့သောအယူရှိတော်မူ၏။
+</textarea>
+<p>
+<input type="button" value="Uni > ZG" onclick="convert()">
+<input type="button" value="ZG > Uni" onclick="convertuni()">
+</p>
+
+<script>
+function convert(){
+	document.getElementById('sample').value=uni2zg(document.getElementById('sample').value);
+	document.getElementById('sample').style.fontFamily="Zawgyi-One";
+	document.getElementById('cFont').innerHTML = 'Zawgyi Text';
+}
+function convertuni() {
+	document.getElementById('sample').value=zg2uni(document.getElementById('sample').value);
+	document.getElementById('sample').style.fontFamily="'MON3 Anonta 1'";
+	document.getElementById('cFont').innerHTML = 'Unicode Text';
+}
+</script>
+</body>
+</html>
