@@ -4,7 +4,7 @@
 
 Todo
 
-- [ x ] Java
+- [x] Java
 - [ ] Objective-C
 - [ ] Swift
 - [ ] Ruby
