@@ -2,8 +2,7 @@
 <head>
 <title>Zawgyi to Unicode</title>
 <meta charset="utf-8"/>
-<script src="uni2zg.js"></script>
-<script src="zg2uni.js"></script>
+<script src="rabbit.js"></script>
 </head>
 <body>
 <header>
@@ -11,7 +10,7 @@
 <h2 style="display:inline;font-family:Helvetica,Arial,sans-serif;padding-left:5px">Rabbit</h2>
 </header>
 
-<h3 id="cFont">Unicode Text</h3>
+<h3 id="cFont">Current: Unicode Text</h3>
 <textarea rows="10" cols="10" id="sample" style="width:100%;font-size:18px;font-family:'MON3 Anonta 1'">သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ်ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေးဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။
 
 ယေဓမ္မာ ဟေတုပ္ပဘဝါ တေသံ ဟေတုံ တထာဂတော အာဟ တေသဉ္စ ယောနိရောဓေါ ဧဝံ ဝါဒီ မဟာသမဏော။
@@ -29,16 +28,20 @@
 <input type="button" value="ZG > Uni" onclick="convertuni()">
 </p>
 
+<p>
+	Found a bug ? Please , open <a href="https://github.com/saturngod/Rabbit/issues/new">new issue</a>.
+</p>
+
 <script>
 function convert(){
-	document.getElementById('sample').value=uni2zg(document.getElementById('sample').value);
+	document.getElementById('sample').value=Rabbit.uni2zg(document.getElementById('sample').value);
 	document.getElementById('sample').style.fontFamily="Zawgyi-One";
-	document.getElementById('cFont').innerHTML = 'Zawgyi Text';
+	document.getElementById('cFont').innerHTML = 'Current: Zawgyi Text';
 }
 function convertuni() {
-	document.getElementById('sample').value=zg2uni(document.getElementById('sample').value);
+	document.getElementById('sample').value=Rabbit.zg2uni(document.getElementById('sample').value);
 	document.getElementById('sample').style.fontFamily="'MON3 Anonta 1'";
-	document.getElementById('cFont').innerHTML = 'Unicode Text';
+	document.getElementById('cFont').innerHTML = 'Current: Unicode Text';
 }
 </script>
 </body>
