@@ -6,6 +6,6 @@ Todo
 
 - [x] Java
 - [ ] Objective-C
-- [ ] Swift
+- [x] Swift
 - [ ] Ruby
 - [ ] Python
