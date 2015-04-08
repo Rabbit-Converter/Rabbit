@@ -1,6 +1,5 @@
 var fs = require('fs');
 
-//Language Template Compiler
 var js = require(__dirname + "/lang/js/js_template.js");
 var php = require(__dirname + "/lang/php/php_template.js");
 var java = require(__dirname + "/lang/java/java_template.js");
