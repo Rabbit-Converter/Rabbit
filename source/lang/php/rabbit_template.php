@@ -2,13 +2,13 @@
 class Rabbit {
   static function uni2zg($unicode) {
 
-    $rule = {{UNI2ZG}};
+    $rule = json_decode("{{UNI2ZG}}",true);
     return Rabbit::replace_with_rule($rule,$unicode);
   }
 
   static function zg2uni($zawgyi) {
   
-    $rule = {{ZG2UNI}};
+    $rule = json_decode("{{ZG2UNI}}",true);
     return Rabbit::replace_with_rule($rule,$zawgyi);
   }
 

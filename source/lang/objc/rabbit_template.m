@@ -12,14 +12,19 @@
 
 + (NSString *)uni2zg:(NSString *)zawgyi {
   
-  NSArray *rule = {{UNI2ZG}};
+  
+  NSString *json = @"{{UNI2ZG}}";
+  NSData *data =[json dataUsingEncoding:NSUTF8StringEncoding];
+  NSArray *rule = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
   
   return [self replaceWithRule:rule AndText:zawgyi];
 }
 
 + (NSString *)zg2uni:(NSString *)unicode {
-  
-  NSArray *rule = {{ZG2UNI}};
+
+  NSString *json = @"{{ZG2UNI}}";
+  NSData *data =[json dataUsingEncoding:NSUTF8StringEncoding];
+  NSArray *rule = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
   
   return [self replaceWithRule:rule AndText:unicode];
 }

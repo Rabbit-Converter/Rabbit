@@ -2,7 +2,7 @@ exports.compile = function(uni2zg,zg2uni,path) {
   
   var fs = require('fs');
   
-  var template = fs.readFileSync(__dirname + "/rabbit_template.m");
+  var template = fs.readFileSync(__dirname + "/rabbit_template.swift");
   
   
   template = template + "";//for make sure string
@@ -19,6 +19,7 @@ function clear(json) {
   json = json.replace(/  /g," ");
   json = json.replace(/  /g," ");
   json = json.replace(/  /g," ");
+  json = json.replace(/\\u([0-9a-fA-F]{4})/g,"\\u{$1}");
   return json;
 }
 
