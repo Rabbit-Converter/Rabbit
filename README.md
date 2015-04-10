@@ -4,6 +4,8 @@
 
 **Another Zawgyi <=> Unicode Converter**
 
+##Info
+
 Zawgyi to Unicode has been written in [2011](https://github.com/saturngod/ZG2Uni_JS/commits/master). Now, unicode to zawgyi has been finished.
 
 ### Why another converter ?
@@ -22,3 +24,17 @@ For Unicode to zawgyi , Parabaik is the GPL license and cannot use in iOS app an
 - [Android](https://play.google.com/store/apps/details?id=com.comquas.rabbitzawgyiunicodeconverter)
 
 
+## Build
+
+All the rule are under `source/rule` folder
+
+All the langue template and compile script are under `source/lang` folder
+
+To Build 
+
+```
+cd source
+node build.js
+```
+
+You can get build result under the `output` folder.
