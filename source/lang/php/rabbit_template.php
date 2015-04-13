@@ -1,28 +1,53 @@
 <?php
-class Rabbit {
-  static function uni2zg($unicode) {
 
-    $rule = json_decode("{{UNI2ZG}}",true);
-    return Rabbit::replace_with_rule($rule,$unicode);
-  }
+/**
+ * Rabbit is Another Zawgyi <=> Unicode Converter.
+ * 
+ * @author Saturngod <me@saturngod.net>
+ */
+class Rabbit
+{
+    /**
+     * Convert unicode string to zawgyi.
+     *
+     * @param  string $unicode
+     * @return string
+     */
+    public static function uni2zg($unicode)
+    {
+        $rule = json_decode("{{UNI2ZG}}", true);
 
-  static function zg2uni($zawgyi) {
-  
-    $rule = json_decode("{{ZG2UNI}}",true);
-    return Rabbit::replace_with_rule($rule,$zawgyi);
-  }
-
-  static function replace_with_rule($rule,$output) {
-    $max_loop = count($rule);
-
-    for($i=0; $i < $max_loop; $i++) {
-      $data = $rule[$i];
-      $from = "~".json_decode('"'.$data["from"].'"')."~u";
-      $to = json_decode('"'.$data["to"].'"');
-
-      $output = preg_replace($from,$to,$output);
+        return self::replaceWithRule($rule, $unicode);
     }
 
-    return $output;
-  }
+    /**
+     * Convert zawgyi string to unicode.
+     *
+     * @param  string $unicode
+     * @return string
+     */
+    public static function zg2uni($zawgyi)
+    {
+        $rule = json_decode("{{ZG2UNI}}", true);
+
+        return self::replaceWithRule($rule, $zawgyi);
+    }
+
+    /**
+     * Replace the string with rules.
+     *
+     * @param  array $rule
+     * @param  string $output
+     * @return string
+     */
+    protected static function replaceWithRule($rule, $output)
+    {
+        foreach ($rule as $data) {
+            $from = "~".json_decode('"'.$data["from"].'"')."~u";
+            $to = json_decode('"'.$data["to"].'"');
+            $output = preg_replace($from, $to, $output);
+        }
+
+        return $output;
+    }
 }
