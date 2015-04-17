@@ -10,9 +10,9 @@ Zawgyi to Unicode has been written in [2011](https://github.com/saturngod/ZG2Uni
 
 ### Why another converter ?
 
-When I was writting [ZG2uni](https://github.com/saturngod/ZG2Uni_JS/) , [Parabaik](https://github.com/ngwestar/parabaik) is not opensource. At that time, I need to use for [MYSTERY ZILLION](http://www.mysteryzillion.org) for converting the whole database to Unicode.
+When I was writting [ZG2uni](https://github.com/saturngod/ZG2Uni_JS/) , [Parabaik](https://github.com/ngwestar/parabaik) was not opensource. At that time, I need to use for [MYSTERY ZILLION](http://www.mysteryzillion.org) for converting the whole database to Unicode. So, I wrote ZG2Uni (of course , it has some bugs and some rule missing). 
 
-For Unicode to zawgyi , Parabaik is the GPL license and cannot use in iOS app and Android App. So, decided to write new one with **WTFPL license**.
+For Unicode to zawgyi , ~~Parabaik is the GPL license and cannot use in iOS app and Android App~~ Parabaik is the LGPL license. So, decided to write new one with **WTFPL license**.
 
 > I cannot promise , it's correct 100% after converting.
 
