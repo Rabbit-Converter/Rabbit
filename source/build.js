@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 
 var js = require(__dirname + "/lang/js/js_template.js");
 var php = require(__dirname + "/lang/php/php_template.js");
@@ -19,3 +20,14 @@ php.compile(uni2json,zg2uni,__dirname + "/output/php/Rabbit.php");
 python.compile(uni2json,zg2uni,__dirname + "/output/python/Rabbit.py");
 ruby.compile(uni2json,zg2uni,__dirname + "/output/ruby/Rabbit.rb");
 csharp.compile(uni2json,zg2uni,__dirname + "/output/csharp/Rabbit.cs");
+
+
+//time to move to Packages
+copy(__dirname + "/output/ruby/Rabbit.rb",path.resolve(__dirname + "/../Packages/ruby/lib/rabbit.rb"));
+copy(__dirname + "/output/php/Rabbit.php",path.resolve(__dirname + "/../Packages/PHP/test/Rabbit.php"));
+copy(__dirname + "/output/php/Rabbit.php",path.resolve(__dirname + "/../Packages/PHP/src/Rabbit.php"));
+
+
+function copy(from,to) {
+  fs.createReadStream(from).pipe(fs.createWriteStream(to));
+}
