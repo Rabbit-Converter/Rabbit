@@ -1,9 +1,10 @@
-exports.compile = function(uni2zg,zg2uni,path) {
+exports.compile = function(uni2zg, zg2uni, version, path) {
   
   var fs = require('fs');
   
   var template = fs.readFileSync(__dirname + "/rabbit_template.php");
   template = template + "";//for make sure string
+  template = template.replace("{{VERSION}}", version);
   template = template.replace("{{UNI2ZG}}",clear(uni2zg));
   template = template.replace("{{ZG2UNI}}",clear(zg2uni));  
   fs.writeFileSync(path,template);

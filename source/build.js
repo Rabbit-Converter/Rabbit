@@ -1,6 +1,9 @@
 var fs = require('fs');
 var path = require('path');
 
+// Get Rabbit Converter Version number from version file
+var version = fs.readFileSync(__dirname + "/version");
+
 //all language
 var js = require(__dirname + "/lang/js/js_template.js");
 var php = require(__dirname + "/lang/php/php_template.js");
@@ -19,7 +22,7 @@ var zg2uni = fs.readFileSync(__dirname + "/rule/zg2uni.json");
 java.compile(uni2json,zg2uni,__dirname + "/output/java/com/comquas/rabbit/Rabbit.java");
 js.compile(uni2json,zg2uni,__dirname + "/output/javascript/rabbit.js");
 objc.compile(uni2json,zg2uni,__dirname + "/output/objective-c/Rabbit.m");
-php.compile(uni2json,zg2uni,__dirname + "/output/php/Rabbit.php");
+php.compile(uni2json,zg2uni, version, __dirname + "/output/php/Rabbit.php");
 python.compile(uni2json,zg2uni,__dirname + "/output/python/Rabbit.py");
 ruby.compile(uni2json,zg2uni,__dirname + "/output/ruby/Rabbit.rb");
 csharp.compile(uni2json,zg2uni,__dirname + "/output/csharp/Rabbit.cs");
@@ -27,8 +30,12 @@ elixir.compile(uni2json,zg2uni,__dirname + "/output/elixir/Rabbit.ex");
 
 //time to move to Packages
 copy(__dirname + "/output/ruby/Rabbit.rb",path.resolve(__dirname + "/../Packages/ruby/lib/rabbit.rb"));
-copy(__dirname + "/output/php/Rabbit.php",path.resolve(__dirname + "/../Packages/PHP/test/Rabbit.php"));
 copy(__dirname + "/output/php/Rabbit.php",path.resolve(__dirname + "/../Packages/PHP/src/Rabbit.php"));
+
+// Move sample.json to tests folder
+copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/PHP/tests/unit/sample.json"));
+copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/Objc/RabbitConverterTests/sample.json"));
+copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/ruby/test/sample.json"));
 
 
 function copy(from,to) {
