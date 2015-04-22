@@ -7,3 +7,9 @@
 [submodule "Packages/Objc"]
 	path = Packages/Objc
 	url = git@github.com:Rabbit-Converter/Rabbit-Objc.git
+[submodule "Packages/Elixir"]
+	path = Packages/Elixir
+	url = git@github.com:Rabbit-Converter/Rabbit-Elixir.git
+[submodule "Packages/Node"]
+	path = Packages/Node
+	url = git@github.com:Rabbit-Converter/Rabbit-Node.git
