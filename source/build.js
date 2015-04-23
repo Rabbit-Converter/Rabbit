@@ -22,6 +22,7 @@ var zg2uni = fs.readFileSync(__dirname + "/rule/zg2uni.json");
 java.compile(uni2json,zg2uni,__dirname + "/output/java/com/comquas/rabbit/Rabbit.java");
 js.compile(uni2json,zg2uni,__dirname + "/output/javascript/rabbit.js");
 objc.compile(uni2json,zg2uni,__dirname + "/output/objective-c/Rabbit.m");
+swift.compile(uni2json,zg2uni,__dirname + "/output/swift/Rabbit.swift");
 php.compile(uni2json,zg2uni, version, __dirname + "/output/php/Rabbit.php");
 python.compile(uni2json,zg2uni,__dirname + "/output/python/Rabbit.py");
 ruby.compile(uni2json,zg2uni,__dirname + "/output/ruby/Rabbit.rb");
@@ -33,7 +34,7 @@ copy(__dirname + "/output/ruby/Rabbit.rb",path.resolve(__dirname + "/../Packages
 copy(__dirname + "/output/php/Rabbit.php",path.resolve(__dirname + "/../Packages/PHP/src/Rabbit.php"));
 
 // Move sample.json to tests folder
-copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/PHP/tests/unit/sample.json"));
+copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/PHP/test/unit/sample.json"));
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/Objc/RabbitConverterTests/sample.json"));
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/ruby/test/sample.json"));
 

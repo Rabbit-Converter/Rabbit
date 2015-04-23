@@ -8,6 +8,13 @@
 class Rabbit
 {
     /**
+     * Rabbit Converter version.
+     *
+     * @var string
+     */
+    const VERSION = '1.0.0';
+    
+    /**
      * Convert unicode string to zawgyi.
      *
      * @param  string $unicode

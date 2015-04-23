@@ -13,3 +13,6 @@
 [submodule "Packages/Node"]
 	path = Packages/Node
 	url = git@github.com:Rabbit-Converter/Rabbit-Node.git
+[submodule "Packages/Swift"]
+	path = Packages/Swift
+	url = git@github.com:Rabbit-Converter/Rabbit-Swift.git

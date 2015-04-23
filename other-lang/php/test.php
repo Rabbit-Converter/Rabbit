@@ -1,9 +1,41 @@
 <?php
 
-require 'Rabbit.php';
+class RabbitUnitTest extends PHPUnit_Framework_TestCase
+{
 
+	private $sampleStrings = array();
 
-echo Rabbit::zg2uni("သီဟိုဠ္မွ ဉာဏ္ႀကီးရွင္သည္ အာယုဝဍ္ဎနေဆးၫႊန္းစာကို ဇလြန္ေဈးေဘးဗာဒံပင္ထက္ အဓိ႒ာန္လ်က္ ဂဃနဏဖတ္ခဲ့သည္။");
-echo "\n\n";
-echo Rabbit::uni2zg("သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ်ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေးဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။");
-echo "\n\n";
+	public function setUp()
+	{
+		$this->sampleStrings = json_decode(file_get_contents(__DIR__.'/sample.json'), true);
+	}
+
+	public function tearDown()
+	{
+		$this->sampleStrings = array();
+	}
+
+	/**
+	 * Test Zawgyi to Unicode converting.
+	 */
+	public function testZg2uniConverting()
+	{
+		foreach ($this->sampleStrings['zg'] as $index => $zawgyi) {
+			$unicode = $this->sampleStrings['uni'][$index];
+
+			$this->assertSame($unicode, Rabbit::zg2uni($zawgyi));
+		}
+	}
+
+	/**
+	 * Test Unicode to Zawgyi converting.
+	 */
+	public function testUni2zgConverting()
+	{
+		foreach ($this->sampleStrings['uni'] as $index => $unicode) {
+			$zawgyi = $this->sampleStrings['zg'][$index];
+
+			$this->assertSame($zawgyi, Rabbit::uni2zg($unicode));
+		}
+	}
+}

@@ -8,9 +8,9 @@
 
 import UIKit
 
-struct Rabbit {
+public struct Rabbit {
   
-  static func uni2zg(unicode:String) ->String {
+  public static func uni2zg(unicode:String) ->String {
     
     var json = "{{UNI2ZG}}"
     var data = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
@@ -21,7 +21,7 @@ struct Rabbit {
     
   }
   
-  static func zg2uni(zawgyi:String) ->String {
+  public static func zg2uni(zawgyi:String) ->String {
     
     var json = "{{ZG2UNI}}"
     var data = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
