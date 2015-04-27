@@ -1,4 +1,4 @@
-# Rabbit Myanmart font converter
+	# Rabbit Myanmart font converter
 # Author : Arkar Aung for Elixir language
 
 defmodule Rabbit do
@@ -35,9 +35,9 @@ defmodule Rabbit do
 		text
 	end
 
-	defp check(rules, text) do
-		{_, rule} = Regex.compile(elem(hd(rules), 0), [:unicode])
-		text = Regex.replace(rule, text, elem(hd(rules), 1))
-		check(tl(rules), text)
+	defp check([head|tail], text) do
+		{_, rule} = Regex.compile(elem(head, 0), [:unicode])
+		text = Regex.replace(rule, text, elem(head, 1))
+		check(tail, text)
 	end
 end
