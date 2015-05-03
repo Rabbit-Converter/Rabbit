@@ -453,6 +453,10 @@ function zg2uni(output) {
         "to": "\u103f"
     },
     {
+        "from": "\u1036\u1088",
+        "to": "\u1088\u1036"
+    },
+    {
         "from": "\u1088",
         "to": "\u103e\u102f"
     },
