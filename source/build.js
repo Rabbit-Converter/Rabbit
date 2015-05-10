@@ -25,16 +25,22 @@ objc.compile(uni2json,zg2uni,__dirname + "/output/objective-c/Rabbit.m");
 swift.compile(uni2json,zg2uni,__dirname + "/output/swift/Rabbit.swift");
 php.compile(uni2json,zg2uni, version, __dirname + "/output/php/Rabbit.php");
 python.compile(uni2json,zg2uni,__dirname + "/output/python/Rabbit.py");
-ruby.compile(uni2json,zg2uni,__dirname + "/output/ruby/Rabbit.rb");
+ruby.compile(uni2json,zg2uni,__dirname + "/output/ruby/rabbit.rb");
 csharp.compile(uni2json,zg2uni,__dirname + "/output/csharp/Rabbit.cs");
 elixir.compile(uni2json,zg2uni,__dirname + "/output/elixir/Rabbit.ex");
 
 //time to move to Packages
-copy(__dirname + "/output/ruby/Rabbit.rb",path.resolve(__dirname + "/../Packages/ruby/lib/rabbit.rb")); //Ruby
+copy(__dirname + "/output/ruby/rabbit.rb",path.resolve(__dirname + "/../Packages/ruby/lib/rabbit.rb")); //Ruby
 copy(__dirname + "/output/php/Rabbit.php",path.resolve(__dirname + "/../Packages/PHP/src/Rabbit.php")); //PHP
 copy(__dirname + "/output/objective-c/Rabbit.m",path.resolve(__dirname + "/../Packages/Objc/Classes/Rabbit.m")); //objc
 copy(__dirname + "/output/swift/Rabbit.swift",path.resolve(__dirname + "/../Packages/Swift/Classes/Rabbit.swift")); //swift
-copy(__dirname + "/output/javascript/rabbit.js",path.resolve(__dirname + "/../Packages/Node/lib/rabbit.js")); //swift
+
+//for node, need to append string
+copyWithCompletion(__dirname + "/output/javascript/rabbit.js",path.resolve(__dirname + "/../Packages/Node/lib/rabbit.js"),function() {
+	
+	fs.appendFileSync(path.resolve(__dirname + "/../Packages/Node/lib/rabbit.js"), "\nmodule.exports = Rabbit;\n",encoding='utf8');
+	
+});
 
 // Move sample.json to tests folder
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/PHP/test/unit/sample.json"));
@@ -44,4 +50,13 @@ copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/ruby
 
 function copy(from,to) {
   fs.createReadStream(from).pipe(fs.createWriteStream(to));
+}
+
+function copyWithCompletion(from,to,callback) {
+	var stream =fs.createReadStream(from);
+	stream.pipe(fs.createWriteStream(to));
+	
+	stream.on('close', function(){
+		callback();
+	});
 }
