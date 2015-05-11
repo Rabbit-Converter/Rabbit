@@ -34,6 +34,7 @@ copy(__dirname + "/output/ruby/rabbit.rb",path.resolve(__dirname + "/../Packages
 copy(__dirname + "/output/php/Rabbit.php",path.resolve(__dirname + "/../Packages/PHP/src/Rabbit.php")); //PHP
 copy(__dirname + "/output/objective-c/Rabbit.m",path.resolve(__dirname + "/../Packages/Objc/Classes/Rabbit.m")); //objc
 copy(__dirname + "/output/swift/Rabbit.swift",path.resolve(__dirname + "/../Packages/Swift/Classes/Rabbit.swift")); //swift
+copy(__dirname + "/output/elixir/Rabbit.ex",path.resolve(__dirname + "/../Packages/Elixir/lib/rabbit.ex")); //elixir
 
 //for node, need to append string
 copyWithCompletion(__dirname + "/output/javascript/rabbit.js",path.resolve(__dirname + "/../Packages/Node/lib/rabbit.js"),function() {
@@ -46,6 +47,7 @@ copyWithCompletion(__dirname + "/output/javascript/rabbit.js",path.resolve(__dir
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/PHP/test/unit/sample.json"));
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/Objc/RabbitConverterTests/sample.json"));
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/ruby/test/sample.json"));
+copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/Elixir/test/sample.json"));
 
 
 function copy(from,to) {
