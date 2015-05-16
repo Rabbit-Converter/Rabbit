@@ -1,38 +1,60 @@
-﻿using System.Text.RegularExpressions;
-using System.Web.Script.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
-namespace Rabbit
+public static class Rabbit
 {
-	public static class Rabbit
-	{
+    private static readonly List<RabbitRule> _uni2ZgRules;
+    private static readonly List<RabbitRule> _zg2UniRules;
 
-		public static string uni2zg(string input) {
+    static Rabbit()
+    {
+        _uni2ZgRules = new List<RabbitRule> { {{UNI2ZG}} };
+        _zg2UniRules = new List<RabbitRule> { {{ZG2UNI}} };
+    }
 
-			string rule = "{{UNI2ZG}}";
-			return replace_with_rule(rule,input);
-		}
+    public static string Uni2Zg(string input)
+    {
+        string output = input;
+        if (!string.IsNullOrEmpty(input))
+        {
+            foreach (var rule in _uni2ZgRules)
+            {
+                output = rule.Apply(output);
+            }
+        }
+        return output;
+    }
 
-		public static string zg2uni(string input) {
+    public static string Zg2Uni(string input)
+    {
+        string output = input;
+        if (!string.IsNullOrEmpty(input))
+        {
+            foreach (var rule in _zg2UniRules)
+            {
+                output = rule.Apply(output);
+            }
+        }
+        return output;
+    }
 
-			string rule = "{{ZG2UNI}}";
-			return replace_with_rule(rule,input);
-		}
+    private class RabbitRule
+    {
+        private readonly Regex _regex;
+        public RabbitRule(string from, string to)
+        {
+            From = from;
+            To = to;
 
-		public static string replace_with_rule(string json,string output) {
-			RabbitRule[] rules = new JavaScriptSerializer().Deserialize<RabbitRule[]>(json);
-			int max_loop = rules.Length;
-			for (int i = 0; i < max_loop; i++) {
-				RabbitRule rule = rules[i];
-				output = Regex.Replace(output, rule.from, rule.to);
-			}
-			return output;
-		}
-	}
+            _regex = new Regex(from, RegexOptions.Compiled);
+        }
 
-	class RabbitRule
-	{
-		public string from {get;set;}
-		public string to {get;set;}
-	}
+        public string From { get; private set; }
+        public string To { get; private set; }
+
+        public string Apply(string str)
+        {
+            return _regex.Replace(str, To);
+        }
+    }
 }
-
