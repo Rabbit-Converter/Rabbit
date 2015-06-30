@@ -8,7 +8,6 @@ Todo
 - [x] PHP
 - [x] Ruby
 - [x] C#
-- [x] Elixir
 
 ## For Java
 
