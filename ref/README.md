@@ -8,7 +8,7 @@
 
 ### Character To Unicode number
 
-- [rishihda's unicode code converter](http://rishida.net/tools/conversion/)
+- [rishihda's unicode code converter](https://r12a.github.io)
 
 ### Characters Map
 
