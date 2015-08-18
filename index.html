@@ -37,9 +37,9 @@
 		<h2 style="display:inline;font-family:Helvetica,Arial,sans-serif;padding-left:5px">Rabbit</h2>
 	</header>
 
-	<h3 id="cFont">Current: Unicode Text</h3>
-
-	<textarea rows="10" cols="10" id="sample" style="width:100%;font-size:18px;font-family:'MON3 Anonta 1'">သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ်ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေးဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။
+	<div style="width:40%;padding-right:5px;display:inline-block">
+        <h3>Unicode</h3>
+	<textarea rows="10" cols="10" id="unicode" style="font-size:18px;font-family:'MON3 Anonta 1';height:50%;width:100%" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ်ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေးဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။
 
 ယေဓမ္မာ ဟေတုပ္ပဘဝါ တေသံ ဟေတုံ တထာဂတော အာဟ တေသဉ္စ ယောနိရောဓေါ ဧဝံ ဝါဒီ မဟာသမဏော။
 
@@ -49,13 +49,22 @@
 
 ထိုအကြောင်းတရားတို့၏ ချုပ်ငြိမ်းရာတရားတို့ကိုလည်း ဟောတော်မူ၏။
 
-ရဟန်းကြီးဖြစ်သော ဗုဒ္ဓမြတ်စွာဘုရားသည် ဤသို့သောအယူရှိတော်မူ၏။
-	</textarea>
+ရဟန်းကြီးဖြစ်သော ဗုဒ္ဓမြတ်စွာဘုရားသည် ဤသို့သောအယူရှိတော်မူ၏။</textarea>
+</div>
+	<div style="width:40%;padding-left:5px;display:inline-block">
+        <h3>Zawgyi</h3>
+<textarea rows="10" cols="10" id="zawgyi" style="width:40%;font-size:18px;font-family:'Zawgyi-One';height:50%;width:100%" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ္မွ ဉာဏ္ႀကီးရွင္သည္ အာယုဝဍ္ဎနေဆးၫႊန္းစာကို ဇလြန္ေဈးေဘးဗာဒံပင္ထက္ အဓိ႒ာန္လ်က္ ဂဃနဏဖတ္ခဲ့သည္။
 
-	<p>
-		<input type="button" value="Uni > ZG" onclick="convert()" class="btn">
-		<input type="button" value="ZG > Uni" onclick="convertuni()" class="btn">
-	</p>
+ေယဓမၼာ ေဟတုပၸဘဝါ ေတသံ ေဟတုံ တထာဂေတာ အာဟ ေတသၪၥ ေယာနိေရာေဓါ ဧဝံ ဝါဒီ မဟာသမေဏာ။
+
+(ျမန္မာျပန္)
+
+ျမတ္စြာဘုရားရွင္သည္ ေရွးကျပဳခဲ့ဖူးေသာ အေၾကာင္းတရားေၾကာင့္ ျဖစ္ေပၚလာၾကေသာ အက်ိဳးတရားကို ေဟာၾကားေတာ္မူသည္။
+
+ထိုအေၾကာင္းတရားတို႔၏ ခ်ဳပ္ၿငိမ္းရာတရားတို႔ကိုလည္း ေဟာေတာ္မူ၏။
+
+ရဟန္းႀကီးျဖစ္ေသာ ဗုဒၶျမတ္စြာဘုရားသည္ ဤသို႔ေသာအယူရွိေတာ္မူ၏။</textarea></div>
+	
 
 	<p>
 		Found a bug ? Please , open <a href="https://github.com/Rabbit-Converter/Rabbit/issues/new">new issue</a>.
@@ -63,16 +72,49 @@
 </div>
 
 <script>
-function convert(){
-	document.getElementById('sample').value=Rabbit.uni2zg(document.getElementById('sample').value);
-	document.getElementById('sample').style.fontFamily="Zawgyi-One";
-	document.getElementById('cFont').innerHTML = 'Current: Zawgyi Text';
+
+var textFieldInFocus;
+function handleOnFocus(form_element)
+{
+   textFieldInFocus = form_element;
 }
-function convertuni() {
-	document.getElementById('sample').value=Rabbit.zg2uni(document.getElementById('sample').value);
-	document.getElementById('sample').style.fontFamily="'MON3 Anonta 1'";
-	document.getElementById('cFont').innerHTML = 'Current: Unicode Text';
+function handleOnBlur()
+{
+   textFieldInFocus = null;
 }
+
+var unicode = document.getElementById("unicode");
+var zawgyi = document.getElementById("zawgyi");
+
+onchangeHandler(unicode,zawgyi,"uni2zg");
+onchangeHandler(zawgyi,unicode,"zg2uni");
+
+function converter(textField,tochangeField,toconv) {
+    if(tochangeField != textFieldInFocus) {
+        if(toconv == "uni2zg") {
+              tochangeField.value = Rabbit.uni2zg(textField.value);
+        }
+        else {
+             tochangeField.value = Rabbit.zg2uni(textField.value);
+        }
+    }
+}
+
+function onchangeHandler(textField,tochangeField,toconv) {
+    
+    if (textField.addEventListener) {
+      textField.addEventListener('input', function() {
+          converter(textField,tochangeField,toconv);
+      }, false);
+    } else if (textField.attachEvent) {
+      textField.attachEvent('onpropertychange', function() {
+        // IE
+          converter(textField,tochangeField,toconv);
+      });
+    }
+    
+}
+
 </script>
 </body>
 </html>
