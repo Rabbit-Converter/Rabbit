@@ -518,7 +518,7 @@ function zg2uni(output) {
     },
     {
         "from": "\u1091",
-        "to": "\u100f\u1039\u1091"
+        "to": "\u100f\u1039\u100d"
     },
     {
         "from": "\u1019\u102c(\u107b|\u1093)",
@@ -672,7 +672,8 @@ function zg2uni(output) {
       "from" : " \u1037",
       "to": "\u1037"
     }
-];
+]
+;
   return replace_with_rule(rule,output);
 }
 
