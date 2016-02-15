@@ -12,10 +12,10 @@ public struct Rabbit {
   
   public static func uni2zg(unicode:String) ->String {
     
-    var json = "{{UNI2ZG}}"
-    var data = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+    let json = "{{UNI2ZG}}"
+    let data = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
     
-    var rule:NSArray = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
+    let rule:NSArray = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
     
     return replaceRule(rule, original: unicode)
     
@@ -23,10 +23,10 @@ public struct Rabbit {
   
   public static func zg2uni(zawgyi:String) ->String {
     
-    var json = "{{ZG2UNI}}"
-    var data = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+    let json = "{{ZG2UNI}}"
+    let data = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
     
-    var rule:NSArray = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
+    let rule:NSArray = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSArray
     
     return replaceRule(rule, original: zawgyi)
     
@@ -35,13 +35,13 @@ public struct Rabbit {
   static func replaceRule(rule:NSArray,original:String) -> String {
     
     var output = original
-    var maxLoop = rule.count
+    let maxLoop = rule.count
     var i = 0
-    for(i ; i < maxLoop ; i++) {
-      var data:NSDictionary = rule[i] as! NSDictionary
-      var from:String = data["from"] as! String
-      var to:String = data["to"] as! String
-      var range: Range<String.Index> = Range<String.Index>(start: output.startIndex,end: output.endIndex)
+    for(i = 0 ; i < maxLoop ; i++) {
+      let data:NSDictionary = rule[i] as! NSDictionary
+      let from:String = data["from"] as! String
+      let to:String = data["to"] as! String
+      let range: Range<String.Index> = Range<String.Index>(start: output.startIndex,end: output.endIndex)
       output = output.stringByReplacingOccurrencesOfString(from, withString: to, options: .RegularExpressionSearch, range: range)
     }
     

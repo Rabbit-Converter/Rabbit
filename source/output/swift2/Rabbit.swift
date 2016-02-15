@@ -37,7 +37,7 @@ public struct Rabbit {
     var output = original
     let maxLoop = rule.count
     var i = 0
-    for(i ; i < maxLoop ; i++) {
+    for(i = 0 ; i < maxLoop ; i++) {
       let data:NSDictionary = rule[i] as! NSDictionary
       let from:String = data["from"] as! String
       let to:String = data["to"] as! String
