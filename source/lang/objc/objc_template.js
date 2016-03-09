@@ -19,6 +19,11 @@ function clear(json) {
   json = json.replace(/  /g," ");
   json = json.replace(/  /g," ");
   json = json.replace(/  /g," ");
+  /*
+   * In xcode 7 \u0020 is showing error. Cannot be specified by universal character name.
+   * So, replace with space instead of \u0020
+   */
+  json = json.replace(/\\u0020/g," ");
   return json;
 }
 
