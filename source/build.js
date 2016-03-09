@@ -35,7 +35,7 @@ elixir.compile(uni2json,zg2uni,__dirname + "/output/elixir/Rabbit.ex");
 copy(__dirname + "/output/ruby/rabbit.rb",path.resolve(__dirname + "/../Packages/ruby/lib/rabbit.rb")); //Ruby
 copy(__dirname + "/output/php/Rabbit.php",path.resolve(__dirname + "/../Packages/PHP/src/Rabbit.php")); //PHP
 copy(__dirname + "/output/objective-c/Rabbit.m",path.resolve(__dirname + "/../Packages/Objc/Classes/Rabbit.m")); //objc
-copy(__dirname + "/output/swift/Rabbit.swift",path.resolve(__dirname + "/../Packages/Swift/Classes/Rabbit.swift")); //swift
+copy(__dirname + "/output/swift2/Rabbit.swift",path.resolve(__dirname + "/../Packages/Swift/Classes/Rabbit.swift")); //swift
 copy(__dirname + "/output/elixir/Rabbit.ex",path.resolve(__dirname + "/../Packages/Elixir/lib/rabbit.ex")); //elixir
 
 //for node, need to append string
