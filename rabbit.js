@@ -767,11 +767,14 @@ function zg2uni(output) {
     {
         "from": "\u1044\u1004\u103a\u1038",
         "to": "\u104E\u1004\u103a\u1038"
-    }
-    ,
+    },
     {
         "from": "([\u102d\u102e])\u1039([\u1000-\u1021])",
         "to": "\u1039$2$1"
+    },
+    {
+        "from": "\u1036\u103d",
+        "to": "\u103d\u1036",
     }
 ]
 ;
@@ -786,7 +789,7 @@ function replace_with_rule(rule,output) {
     var data = rule[i];
     var from = data["from"];
     var to = data["to"];
-
+    
     var from_regex = new RegExp(from,"g");
     output = output.replace(from_regex,to);
   }
