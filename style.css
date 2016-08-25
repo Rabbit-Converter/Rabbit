@@ -1,0 +1,47 @@
+header{
+	text-align:center;
+}
+
+h3{
+	text-align:center;
+}
+
+footer{
+	clear:both;
+	text-align:center;
+	padding-top:30px;
+}
+
+textarea{
+	max-width:100%;
+	min-width:100%;
+	min-height:300px;
+}
+
+#Unicode{
+	display:block;
+	width:50%;
+	float:left;
+}
+
+#Zawgyi{
+	width:50%;
+	float:left;
+}
+
+@media(max-width:701px){
+	
+textarea{
+	min-height:200px;
+}
+
+#Unicode{
+	width:100%;
+}
+
+#Zawgyi{
+	width:100%;
+}
+
+
+}
