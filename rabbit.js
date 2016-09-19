@@ -790,7 +790,7 @@ function zg2uni(output) {
     },
     {
         "from": "\u1036\u103d",
-        "to": "\u103d\u1036",
+        "to": "\u103d\u1036"
     }
 ]
 ;
@@ -805,7 +805,7 @@ function replace_with_rule(rule,output) {
     var data = rule[i];
     var from = data["from"];
     var to = data["to"];
-    
+
     var from_regex = new RegExp(from,"g");
     output = output.replace(from_regex,to);
   }
