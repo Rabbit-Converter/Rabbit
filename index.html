@@ -1,74 +1,30 @@
 <html>
 <head>
-<title>Zawgyi to Unicode</title>
-<meta charset="utf-8"/>
-<script src="rabbit.js"></script>
-<style type="text/css">
-	body {
-		text-align: center;
-		color: #242424;
-	}
-	#container {
-		width: 900px;
-		margin: 0 auto;
-	}
-	#cFont {
-		padding: 10px;
-		color: #5799DA;
-	}
-	textarea {
-		padding: 10px;
-		border: 1px solid #5799DA;
-	}
-	.btn {
-		padding: 10px 20px;
-		border: 2px solid #3E9AF5;
-		background: #fff;
-	}
-	.btn:hover {
-		background: #e9e9e9;
-	}
-</style>
-</head>
+	<title>Zawgyi to Unicode</title>
+	<meta charset="utf-8"/>
+	<script src="rabbit.js"></script>
+	<link rel="stylesheet" href="style.css"/>
+	</head>
 <body>
 <div id="container">
 	<header>
-		<img src="rabbit_100.png" align="middle">
-		<h2 style="display:inline;font-family:Helvetica,Arial,sans-serif;padding-left:5px">Rabbit</h2>
+		<img src="rabbit_100.png">
+		<h2>Rabbit</h2>
 	</header>
 
-	<div style="width:40%;padding-right:5px;display:inline-block">
+	<section id="Unicode">
         <h3>Unicode</h3>
-	<textarea rows="10" cols="10" id="unicode" style="font-size:18px;font-family:'MON3 Anonta 1';height:50%;width:100%" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ်ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေးဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။
-
-ယေဓမ္မာ ဟေတုပ္ပဘဝါ တေသံ ဟေတုံ တထာဂတော အာဟ တေသဉ္စ ယောနိရောဓေါ ဧဝံ ဝါဒီ မဟာသမဏော။
-
-(မြန်မာပြန်)
-
-မြတ်စွာဘုရားရှင်သည် ရှေးကပြုခဲ့ဖူးသော အကြောင်းတရားကြောင့် ဖြစ်ပေါ်လာကြသော အကျိုးတရားကို ဟောကြားတော်မူသည်။
-
-ထိုအကြောင်းတရားတို့၏ ချုပ်ငြိမ်းရာတရားတို့ကိုလည်း ဟောတော်မူ၏။
-
-ရဟန်းကြီးဖြစ်သော ဗုဒ္ဓမြတ်စွာဘုရားသည် ဤသို့သောအယူရှိတော်မူ၏။</textarea>
-</div>
-	<div style="width:40%;padding-left:5px;display:inline-block">
-        <h3>Zawgyi</h3>
-<textarea rows="10" cols="10" id="zawgyi" style="width:40%;font-size:18px;font-family:'Zawgyi-One';height:50%;width:100%" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ္မွ ဉာဏ္ႀကီးရွင္သည္ အာယုဝဍ္ဎနေဆးၫႊန္းစာကို ဇလြန္ေဈးေဘးဗာဒံပင္ထက္ အဓိ႒ာန္လ်က္ ဂဃနဏဖတ္ခဲ့သည္။
-
-ေယဓမၼာ ေဟတုပၸဘဝါ ေတသံ ေဟတုံ တထာဂေတာ အာဟ ေတသၪၥ ေယာနိေရာေဓါ ဧဝံ ဝါဒီ မဟာသမေဏာ။
-
-(ျမန္မာျပန္)
-
-ျမတ္စြာဘုရားရွင္သည္ ေရွးကျပဳခဲ့ဖူးေသာ အေၾကာင္းတရားေၾကာင့္ ျဖစ္ေပၚလာၾကေသာ အက်ိဳးတရားကို ေဟာၾကားေတာ္မူသည္။
-
-ထိုအေၾကာင္းတရားတို႔၏ ခ်ဳပ္ၿငိမ္းရာတရားတို႔ကိုလည္း ေဟာေတာ္မူ၏။
-
-ရဟန္းႀကီးျဖစ္ေသာ ဗုဒၶျမတ္စြာဘုရားသည္ ဤသို႔ေသာအယူရွိေတာ္မူ၏။</textarea></div>
+		<textarea id="unicode" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ်ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေးဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။ယေဓမ္မာ ဟေတုပ္ပဘဝါ တေသံ ဟေတုံ တထာဂတော အာဟ တေသဉ္စ ယောနိရောဓေါ ဧဝံ ဝါဒီ မဟာသမဏော။(မြန်မာပြန်)မြတ်စွာဘုရားရှင်သည် ရှေးကပြုခဲ့ဖူးသော အကြောင်းတရားကြောင့် ဖြစ်ပေါ်လာကြသော အကျိုးတရားကို ဟောကြားတော်မူသည်။ထိုအကြောင်းတရားတို့၏ ချုပ်ငြိမ်းရာတရားတို့ကိုလည်း ဟောတော်မူ၏။ရဟန်းကြီးဖြစ်သော ဗုဒ္ဓမြတ်စွာဘုရားသည် ဤသို့သောအယူရှိတော်မူ၏။</textarea>
+	</section>
 	
+	<section id="Zawgyi">
+        <h3>Zawgyi</h3>
+		<textarea id="zawgyi" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ္မွ ဉာဏ္ႀကီးရွင္သည္ အာယုဝဍ္ဎနေဆးၫႊန္းစာကို ဇလြန္ေဈးေဘးဗာဒံပင္ထက္ အဓိ႒ာန္လ်က္ ဂဃနဏဖတ္ခဲ့သည္။ေယဓမၼာ ေဟတုပၸဘဝါ ေတသံ ေဟတုံ တထာဂေတာ အာဟ ေတသၪၥ ေယာနိေရာေဓါ ဧဝံ ဝါဒီ မဟာသမေဏာ။(ျမန္မာျပန္)ျမတ္စြာဘုရားရွင္သည္ ေရွးကျပဳခဲ့ဖူးေသာ အေၾကာင္းတရားေၾကာင့္ ျဖစ္ေပၚလာၾကေသာ အက်ိဳးတရားကို ေဟာၾကားေတာ္မူသည္။ထိုအေၾကာင္းတရားတို႔၏ ခ်ဳပ္ၿငိမ္းရာတရားတို႔ကိုလည္း ေဟာေတာ္မူ၏။ရဟန္းႀကီးျဖစ္ေသာ ဗုဒၶျမတ္စြာဘုရားသည္ ဤသို႔ေသာအယူရွိေတာ္မူ၏။</textarea>
+	</section>
 
-	<p>
+	<footer>
 		Found a bug ? Please , open <a href="https://github.com/Rabbit-Converter/Rabbit/issues/new">new issue</a>.
-	</p>
+	</footer>
 </div>
 
 <script>
