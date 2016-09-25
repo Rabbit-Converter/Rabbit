@@ -1,0 +1,88 @@
+header{
+	text-align:center;
+}
+
+header h2{
+	display: none;
+}
+
+h3{
+	text-align:center;
+}
+
+body, section, #container {
+	margin: 0px;
+	padding: 0px;
+}
+
+footer{
+	clear:both;
+	text-align:center;
+	padding-top:30px;
+}
+
+textarea{
+	max-width:100%;
+	min-width:100%;
+	min-height:300px;
+	padding: 10px;
+	line-height: 1.8em;
+	font-size: 1em;
+	border: 1px solid #5799DA;
+	text-align: left;
+}
+
+#textContainer {
+	text-align: center;
+}
+
+#Unicode{
+	display:inline-block;
+	width:48%;
+	padding-left: 10px;
+	font-family: "Pyidaungsu","MON3 Anonta 1";
+	
+	
+
+}
+
+#Zawgyi{
+	display:inline-block;
+	width:48%;
+	padding-right: 10px;
+	font-family: "Zawgyi-One";
+	
+	
+
+	
+}
+
+@media(max-width:701px){
+	
+
+
+#textContainer {
+	padding: 5px; 
+}
+
+#Unicode{
+	width:100%;
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+#Zawgyi{
+	width:100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+textarea {
+	min-height:200px;
+	font-size: .9em;
+	padding: 10px !important;
+}
+
+
+}
