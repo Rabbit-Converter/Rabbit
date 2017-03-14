@@ -54,6 +54,10 @@ function uni2zg(output) {
         "to": "\u108f"
     },
     {
+        "from" : "\u1014\u103c",
+        "to" : "\u108f\u103c"
+    },
+    {
         "from": "\u1039\u1000",
         "to": "\u1060"
     },
