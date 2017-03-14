@@ -4,6 +4,7 @@ git push origin master
 
 declare -a arr=("Elixir" "Node" "Objc" "PHP" "ruby" "Swift")
 
+cd Packages
 ## now loop through the above array
 for i in "${arr[@]}"
 do
