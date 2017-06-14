@@ -315,10 +315,9 @@ function uni2zg(output) {
 }
 
 function zg2uni(output) {
-  var rule = [
-    {
-        "from":"\u200B",
-        "to" : ""
+  var rule = [{
+        "from": "\u200B",
+        "to": ""
     },
     {
         "from": "(\u103d|\u1087)",
@@ -473,6 +472,10 @@ function zg2uni(output) {
         "to": "\u103d\u103e"
     },
     {
+        "from": "\u103B\u1064",
+        "to": "\u1064\u103B"
+    },
+    {
         "from": "(\u1031)?([\u1000-\u1021])\u1064",
         "to": "\u1004\u103a\u1039$1$2"
     },
@@ -517,8 +520,8 @@ function zg2uni(output) {
         "to": "\u1037"
     },
     {
-        "from" : "([\u1000-\u1021])\u1037\u1032",
-        "to" : "$1\u1032\u1037"
+        "from": "([\u1000-\u1021])\u1037\u1032",
+        "to": "$1\u1032\u1037"
     },
     {
         "from": "\u1096",
@@ -721,28 +724,28 @@ function zg2uni(output) {
         "to": "\u1036\u1037"
     },
     {
-      "from" : " \u1037",
-      "to": "\u1037"
+        "from": " \u1037",
+        "to": "\u1037"
     },
     {
-        "from" : "[\u102d]+",
-        "to" : "\u102d"
+        "from": "[\u102d]+",
+        "to": "\u102d"
     },
     {
-        "from" : "[\u103a]+",
-        "to" : "\u103a"
+        "from": "[\u103a]+",
+        "to": "\u103a"
     },
     {
-        "from" : "[\u103d]+",
-        "to" : "\u103d"
+        "from": "[\u103d]+",
+        "to": "\u103d"
     },
     {
-        "from" : "[\u1037]+",
-        "to" : "\u1037"
+        "from": "[\u1037]+",
+        "to": "\u1037"
     },
     {
-        "from" : "[\u102e]+",
-        "to" : "\u102e"
+        "from": "[\u102e]+",
+        "to": "\u102e"
     },
     {
         "from": "\u102d\u102e|\u102e\u102d",
@@ -772,8 +775,7 @@ function zg2uni(output) {
         "from": "\u1036\u103d",
         "to": "\u103d\u1036"
     }
-]
-;
+];
   return replace_with_rule(rule,output);
 }
 
