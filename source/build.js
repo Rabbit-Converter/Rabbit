@@ -21,6 +21,8 @@ var elixir = require(__dirname + "/lang/elixir/elixir_template.js");
 var uni2json = fs.readFileSync(__dirname + "/rule/uni2zg.json","utf8");
 var zg2uni = fs.readFileSync(__dirname + "/rule/zg2uni.json","utf8");
 
+console.log("Compile Languages ...");
+
 java.compile(uni2json,zg2uni,__dirname + "/output/java/com/comquas/rabbit/Rabbit.java");
 js.compile(uni2json,zg2uni,__dirname + "/output/javascript/rabbit.js");
 objc.compile(uni2json,zg2uni,__dirname + "/output/objective-c/Rabbit.m");
@@ -33,6 +35,7 @@ ruby.compile(uni2json,zg2uni,__dirname + "/output/ruby/rabbit.rb");
 csharp.compile(uni2json,zg2uni,__dirname + "/output/csharp/Rabbit.cs");
 elixir.compile(uni2json,zg2uni,__dirname + "/output/elixir/Rabbit.ex");
 
+console.log("Moving To Package ...");
 //time to move to Packages
 copy(__dirname + "/output/ruby/rabbit.rb",path.resolve(__dirname + "/../Packages/ruby/lib/rabbit.rb")); //Ruby
 copy(__dirname + "/output/php/Rabbit.php",path.resolve(__dirname + "/../Packages/PHP/src/Rabbit.php")); //PHP
@@ -47,12 +50,14 @@ copyWithCompletion(__dirname + "/output/javascript/rabbit.js",path.resolve(__dir
 	
 });
 
+console.log("Moving To Test ...");
 // Move sample.json to tests folder
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/PHP/test/unit/sample.json"));
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/Objc/RabbitConverterTests/sample.json"));
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/ruby/test/sample.json"));
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/Elixir/test/sample.json"));
 
+console.log("Done.");
 
 function copy(from,to) {
   fs.createReadStream(from).pipe(fs.createWriteStream(to));

@@ -1,10 +1,10 @@
-#Rabbit
+# Rabbit
 
 ![Logo](./rabbit_100.png)
 
 **Another Zawgyi <=> Unicode Converter**
 
-##Info
+## Info
 
 Zawgyi to Unicode has been written in [2011](https://github.com/saturngod/ZG2Uni_JS/commits/master). Now, unicode to zawgyi has been finished.
 
