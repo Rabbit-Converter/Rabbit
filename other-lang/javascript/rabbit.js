@@ -102,7 +102,7 @@ function uni2zg(output) {
         "to": "\u106e"
     },
     {
-        "from": "\u100e\u1039\u100d",
+        "from": "\u100d\u1039\u100e",
         "to": "\u106f"
     },
     {
