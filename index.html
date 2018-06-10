@@ -6,14 +6,24 @@
 	<link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href='http://mmwebfonts.comquas.com/fonts/?font=mon3' />
     <link rel="stylesheet" href='http://mmwebfonts.comquas.com/fonts/?font=zawgyi' />
-	</head>
+    <script type="text/javascript">
+      function clearText() {
+        document.getElementById("unicode").value = "";
+        document.getElementById("zawgyi").value = ""
+      }
+
+  </script>
+</head>
 <body>
 <div id="container">
 	<header>
 		<img src="rabbit_100.png">
 		<h2>Rabbit</h2>
 	</header>
+  <br/>
+  
     <div id="textContainer">
+
         <section id="Unicode">
             <h3>Unicode</h3>
             <textarea id="unicode" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ္ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေး ဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။</textarea>
@@ -24,12 +34,18 @@
             <textarea id="zawgyi" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ္မွ ဉာဏ္ႀကီးရွင္သည္ အာယုဝၯနေဆးၫႊန္းစာကို ဇလြန္ေဈးေဘး ဗာဒံပင္ထက္ အဓိ႒ာန္လ်က္ ဂဃနဏဖတ္ခဲ့သည္။</textarea>
         </section>
     </div>
+    <div id="textContainer">
+    <section id="buttons">
+        <input type="button" value="Clear Text" onclick="clearText()">
+    </section>
+  </div>
 	<footer>
 		Found a bug ? Please , open <a href="https://github.com/Rabbit-Converter/Rabbit/issues/new">new issue</a>.
 	</footer>
 </div>
 
 <script>
+
 
 var textFieldInFocus;
 function handleOnFocus(form_element)
@@ -72,6 +88,8 @@ function onchangeHandler(textField,tochangeField,toconv) {
     }
     
 }
+
+
 
 </script>
 </body>
