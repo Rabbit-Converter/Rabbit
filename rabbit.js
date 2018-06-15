@@ -315,7 +315,12 @@ function uni2zg(output) {
 }
 
 function zg2uni(output) {
-  var rule = [{
+  var rule = [
+    {
+        "from" : "([\u102D\u102E\u103D\u102F\u1037\u1095])\\1+",
+        "to" : "$1"
+    },
+    {
         "from": "\u200B",
         "to": ""
     },
