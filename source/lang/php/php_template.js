@@ -12,6 +12,7 @@ exports.compile = function(uni2zg, zg2uni, version, path) {
 
 function clear(json) {
   json = json + "";//make sure for string
+  json = json.replace(/\\/g,"\\\\");
   json = json.replace(/\"/g,"\\\"");
   json = json.replace(/\n/g,"");
   json = json.replace(/\r/g,"");

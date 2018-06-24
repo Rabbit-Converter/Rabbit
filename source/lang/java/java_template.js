@@ -12,6 +12,7 @@ exports.compile = function(uni2zg,zg2uni,path) {
 
 function clear_line_break(json) {
   json = json + "";
+  json = json.replace(/\\/g,"\\\\");
   json = json.replace(/\r/g,"");
   json = json.replace(/\n/g,"");
   json = json.replace(/    /g," ");
