@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+var ncp = require('ncp').ncp;
 
 // Get Rabbit Converter Version number from version file
 var version = fs.readFileSync(__dirname + "/version");
@@ -50,12 +51,26 @@ copyWithCompletion(__dirname + "/output/javascript/rabbit.js",path.resolve(__dir
 	
 });
 
+console.log("moving folder to source");
+ncp(__dirname + "/output/",path.resolve(__dirname + "/../other-lang/"),function (err) {
+	if (err) {
+	  return console.error(err);
+	}
+	console.log('Copied lang folder');
+});
+
+
+console.log("Copy js to root folder");
+copy(__dirname + "/output/javascript/rabbit.js",path.resolve(__dirname + "/../rabbit.js"));
+
 console.log("Moving To Test ...");
 // Move sample.json to tests folder
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/PHP/test/unit/sample.json"));
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/Objc/RabbitConverterTests/sample.json"));
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/ruby/test/sample.json"));
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/Elixir/test/sample.json"));
+
+
 
 console.log("Done.");
 
