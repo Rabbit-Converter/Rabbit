@@ -18,7 +18,7 @@ function clear(json) {
   json = json.replace(/\r/g,"");
   json = json.replace(/  /g," ");
   json = json.replace(/  /g," ");
-  json = json.replace(/  /g," ");
+  json = json.replace(/\\/g,"\\\\");
   json = json.replace(/\\u([0-9a-fA-F]{4})/g,"\\u{$1}");
   return json;
 }
