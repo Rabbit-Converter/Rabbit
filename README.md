@@ -38,3 +38,10 @@ node build.js
 ```
 
 You can get build result under the `output` folder.
+
+## Changelog
+
+### 3/10/2018
+
+- add kotlin and using hash map instead of json. Thanks @vincent-paing
+- remove swift 1 and 2 in compile list. No more support.
