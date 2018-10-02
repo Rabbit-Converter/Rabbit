@@ -12,12 +12,10 @@ var java = require(__dirname + "/lang/java/java_template.js");
 var objc = require(__dirname + "/lang/objc/objc_template.js");
 var python = require(__dirname + "/lang/python/python_template.js");
 var ruby = require(__dirname + "/lang/ruby/ruby_template.js");
-var swift = require(__dirname + "/lang/swift/swift_template.js");
-var swift2 = require(__dirname + "/lang/swift2/swift_template.js");
 var swift3 = require(__dirname + "/lang/swift3/swift_template.js");
 var csharp = require(__dirname + "/lang/csharp/csharp_template.js");
 var elixir = require(__dirname + "/lang/elixir/elixir_template.js");
-
+var kotlin = require(__dirname + "/lang/kotlin/kotlin_template.js");
 //rule
 var uni2json = fs.readFileSync(__dirname + "/rule/uni2zg.json","utf8");
 var zg2uni = fs.readFileSync(__dirname + "/rule/zg2uni.json","utf8");
@@ -27,14 +25,13 @@ console.log("Compile Languages ...");
 java.compile(uni2json,zg2uni,__dirname + "/output/java/com/comquas/rabbit/Rabbit.java");
 js.compile(uni2json,zg2uni,__dirname + "/output/javascript/rabbit.js");
 objc.compile(uni2json,zg2uni,__dirname + "/output/objective-c/Rabbit.m");
-swift.compile(uni2json,zg2uni,__dirname + "/output/swift/Rabbit.swift");
-swift2.compile(uni2json,zg2uni,__dirname + "/output/swift2/Rabbit.swift");
 swift3.compile(uni2json,zg2uni,__dirname + "/output/swift3/Rabbit.swift");
 php.compile(uni2json,zg2uni, version, __dirname + "/output/php/Rabbit.php");
 python.compile(uni2json,zg2uni,__dirname + "/output/python/Rabbit.py");
 ruby.compile(uni2json,zg2uni,__dirname + "/output/ruby/rabbit.rb");
 csharp.compile(uni2json,zg2uni,__dirname + "/output/csharp/Rabbit.cs");
 elixir.compile(uni2json,zg2uni,__dirname + "/output/elixir/Rabbit.ex");
+kotlin.compile(uni2json,zg2uni,__dirname + "/output/kotlin/Rabbit.kt");
 
 console.log("Moving To Package ...");
 //time to move to Packages
