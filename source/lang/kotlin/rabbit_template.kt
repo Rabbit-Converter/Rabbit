@@ -1,31 +1,32 @@
-class Rabbit {
-    companion object {
-        fun uni2zg(input: String): String {
-           val rules = mapOf<String,String>(
-                   {{UNI2ZG}}
-           )
+object Rabbit {
 
-            return replaceWithRule(rules,input)
-        }
+    private val unicodeToZawgyiRules = mapOf<String, String>(
+            {{UNI2ZG}}
+    )
 
-        fun zg2uni(input: String): String {
-            val rules = mapOf<String,String>(
-                   {{ZG2UNI}}
-            )
+    private val zawgyiToUnicodeRules = mapOf<String, String>(
+            {{ZG2UNI}}
+    )
 
-            return replaceWithRule(rules,input)
-        }
-
-        private fun replaceWithRule(rules: Map<String,String>, input: String): String {
-            var output = input
-
-            rules.forEach {(from,to) ->
-                val reg = Regex(from)
-                output = output.replace(reg,to)
-            }
-
-            return output
-        }
-
+    @JvmStatic
+    fun uni2zg(input: String): String {
+        return replaceWithRule(unicodeToZawgyiRules, input)
     }
+
+    @JvmStatic
+    fun zg2uni(input: String): String {
+        return replaceWithRule(zawgyiToUnicodeRules, input)
+    }
+
+    private fun replaceWithRule(rules: Map<String, String>, input: String): String {
+        var output = input
+
+        rules.forEach { (from, to) ->
+            val reg = from.toRegex()
+            output = output.replace(reg, to)
+        }
+
+        return output
+    }
+
 }
