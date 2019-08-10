@@ -729,10 +729,6 @@ function zg2uni(output) {
         "to": "\u1036\u1037"
     },
     {
-        "from": " \u1037",
-        "to": "\u1037"
-    },
-    {
         "from": "[\u102d]+",
         "to": "\u102d"
     },

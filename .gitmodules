@@ -16,3 +16,6 @@
 [submodule "Packages/Swift"]
 	path = Packages/Swift
 	url = git@github.com:Rabbit-Converter/Rabbit-Swift.git
+[submodule "Packages/Go"]
+	path = Packages/Go
+	url = git@github.com:Rabbit-Converter/Rabbit-Go.git

@@ -16,6 +16,7 @@ var swift3 = require(__dirname + "/lang/swift3/swift_template.js");
 var csharp = require(__dirname + "/lang/csharp/csharp_template.js");
 var elixir = require(__dirname + "/lang/elixir/elixir_template.js");
 var kotlin = require(__dirname + "/lang/kotlin/kotlin_template.js");
+var go = require(__dirname + "/lang/go/go_template.js");
 //rule
 var uni2json = fs.readFileSync(__dirname + "/rule/uni2zg.json","utf8");
 var zg2uni = fs.readFileSync(__dirname + "/rule/zg2uni.json","utf8");
@@ -32,6 +33,7 @@ ruby.compile(uni2json,zg2uni,__dirname + "/output/ruby/rabbit.rb");
 csharp.compile(uni2json,zg2uni,__dirname + "/output/csharp/Rabbit.cs");
 elixir.compile(uni2json,zg2uni,__dirname + "/output/elixir/Rabbit.ex");
 kotlin.compile(uni2json,zg2uni,__dirname + "/output/kotlin/Rabbit.kt");
+go.compile(uni2json,zg2uni,__dirname + "/output/go/rabbit.go");
 
 console.log("Moving To Package ...");
 //time to move to Packages
@@ -40,6 +42,7 @@ copy(__dirname + "/output/php/Rabbit.php",path.resolve(__dirname + "/../Packages
 copy(__dirname + "/output/objective-c/Rabbit.m",path.resolve(__dirname + "/../Packages/Objc/Classes/Rabbit.m")); //objc
 copy(__dirname + "/output/swift3/Rabbit.swift",path.resolve(__dirname + "/../Packages/Swift/Classes/Rabbit.swift")); //swift
 copy(__dirname + "/output/elixir/Rabbit.ex",path.resolve(__dirname + "/../Packages/Elixir/lib/rabbit.ex")); //elixir
+copy(__dirname + "/output/go/rabbit.go",path.resolve(__dirname + "/../Packages/Go/rabbit.go")); //elixir
 
 //for node, need to append string
 copyWithCompletion(__dirname + "/output/javascript/rabbit.js",path.resolve(__dirname + "/../Packages/Node/lib/rabbit.js"),function() {

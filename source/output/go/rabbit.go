@@ -1,10 +1,17 @@
-var Rabbit = {
-  "zg2uni" : zg2uni,
-  "uni2zg": uni2zg
+package rabbit
+
+import (
+	"encoding/json"
+	"github.com/dlclark/regexp2"
+)
+
+type RuleStruct struct {
+    From	string
+    To	string
 }
 
-function uni2zg(output) {
-  var rule = [
+func Uni2zg(str string) string  {
+	unizgRule :=`[
     {
         "from": "\u1004\u103a\u1039",
         "to": "\u1064"
@@ -310,12 +317,13 @@ function uni2zg(output) {
       "to": "\u102C$1\u1094"
     }
 ]
-;
-  return replace_with_rule(rule,output);
+`
+
+	return replaceRule(unizgRule,str)
 }
 
-function zg2uni(output) {
-  var rule = [
+func Zg2uni(str string) string  {
+	zguniRule :=`[
     {
         "from" : "([\u102D\u102E\u103D\u102F\u1037\u1095])\\1+",
         "to" : "$1"
@@ -780,23 +788,26 @@ function zg2uni(output) {
         "from": "\u1036\u103d",
         "to": "\u103d\u1036"
     }
-];
-  return replace_with_rule(rule,output);
+]`
+
+	return replaceRule(zguniRule,str)
 }
 
-function replace_with_rule(rule,output) {
-
-  var max_loop = rule.length;
-  for(i=0; i < max_loop; i++) {
-    
-    var data = rule[i];
-    var from = data["from"];
-    var to = data["to"];
-
-    var from_regex = new RegExp(from,"g");
-    output = output.replace(from_regex,to);
-  }
-
-  return output;
+func replaceRule(ruleJson string,output string) string {
+	
+	var rules []RuleStruct
+	json.Unmarshal([]byte(ruleJson), &rules)
+	var re = regexp2.MustCompile("",0)
+	text := output
+	for i := range rules {
+		re = regexp2.MustCompile(rules[i].From,1)
+		res, err := re.Replace(text, rules[i].To,0,-1)
+		text = res
+		if err != nil {
+			//nothing to do
+		} 
+	}
+	
+	return text
 
 }

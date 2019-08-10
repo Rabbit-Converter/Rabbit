@@ -1,8 +1,7 @@
-class Rabbit {
-    companion object {
-        fun uni2zg(input: String): String {
-           val rules = mapOf<String,String>(
-                   "င်္" to "ၤ",
+object Rabbit {
+
+    private val unicodeToZawgyiRules = mapOf<String, String>(
+            "င်္" to "ၤ",
 "္တွ" to "႖",
 "ါ်" to "ၚ",
 "ဋ္ဌ" to "႒",
@@ -78,14 +77,10 @@ class Rabbit {
 "ႏၱ" to "ႏၲ",
 "([က-အ])([ၻၦ])ာ" to "$1ာ$2",
 "ာ([ၻၦ])့" to "ာ$1႔"
-           )
+    )
 
-            return replaceWithRule(rules,input)
-        }
-
-        fun zg2uni(input: String): String {
-            val rules = mapOf<String,String>(
-                   "([ိီွု့႕])\\1+" to "$1",
+    private val zawgyiToUnicodeRules = mapOf<String, String>(
+            "([ိီွု့႕])\\1+" to "$1",
 "​" to "",
 "ွြ" to "ႊ",
 "(ွ|ႇ)" to "ှ",
@@ -188,7 +183,6 @@ class Rabbit {
 "ို်" to "ို",
 " ့" to "့",
 "့ံ" to "ံ့",
-" ့" to "့",
 "[ိ]+" to "ိ",
 "[်]+" to "်",
 "[ွ]+" to "ွ",
@@ -202,21 +196,27 @@ class Rabbit {
 "([ိီ])္([က-အ])" to "္$2$1",
 "(ြေ)္([က-အ])" to "္$2$1",
 "ံွ" to "ွံ"
-            )
+    )
 
-            return replaceWithRule(rules,input)
-        }
-
-        private fun replaceWithRule(rules: Map<String,String>, input: String): String {
-            var output = input
-
-            rules.forEach {(from,to) ->
-                val reg = Regex(from)
-                output = output.replace(reg,to)
-            }
-
-            return output
-        }
-
+    @JvmStatic
+    fun uni2zg(input: String): String {
+        return replaceWithRule(unicodeToZawgyiRules, input)
     }
+
+    @JvmStatic
+    fun zg2uni(input: String): String {
+        return replaceWithRule(zawgyiToUnicodeRules, input)
+    }
+
+    private fun replaceWithRule(rules: Map<String, String>, input: String): String {
+        var output = input
+
+        rules.forEach { (from, to) ->
+            val reg = from.toRegex()
+            output = output.replace(reg, to)
+        }
+
+        return output
+    }
+
 }
