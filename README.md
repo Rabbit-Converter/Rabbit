@@ -41,6 +41,9 @@ You can get build result under the `output` folder.
 
 ## Changelog
 
+### 11/08/2019
+- add go lang
+
 ### 3/10/2018
 
 - add kotlin and using hash map instead of json. Thanks @vincent-paing
