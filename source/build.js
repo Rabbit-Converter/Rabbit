@@ -52,6 +52,10 @@ copyWithCompletion(__dirname + "/output/javascript/rabbit.js",path.resolve(__dir
 });
 
 console.log("moving folder to source");
+console.log(__dirname + "/output/");
+console.log("To");
+console.log(path.resolve(__dirname + "/../other-lang/"));
+
 ncp(__dirname + "/output/",path.resolve(__dirname + "/../other-lang/"),function (err) {
 	if (err) {
 	  return console.error(err);
@@ -69,8 +73,6 @@ copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/PHP/
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/Objc/RabbitConverterTests/sample.json"));
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/ruby/test/sample.json"));
 copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/Elixir/test/sample.json"));
-
-
 
 console.log("Done.");
 
