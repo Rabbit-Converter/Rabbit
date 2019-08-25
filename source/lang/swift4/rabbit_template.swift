@@ -12,7 +12,9 @@ public struct Rabbit {
     
     public static func uni2zg(_ unicode:String) ->String {
         
-        let json = "{{UNI2ZG}}"
+        let json = """
+        {{UNI2ZG}}
+        """
         let data = json.data(using: String.Encoding.utf8, allowLossyConversion: true)
         
         let rule:NSArray = (try! JSONSerialization.jsonObject(with: data!, options: [])) as! NSArray
@@ -23,7 +25,9 @@ public struct Rabbit {
     
     public static func zg2uni(_ zawgyi:String) ->String {
         
-        let json = "{{ZG2UNI}}"
+        let json = """
+        {{ZG2UNI}}
+        """
         let data = json.data(using: String.Encoding.utf8, allowLossyConversion: true)
         
         let rule:NSArray = (try! JSONSerialization.jsonObject(with: data!, options: [])) as! NSArray

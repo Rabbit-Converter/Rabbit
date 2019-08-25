@@ -12,7 +12,7 @@ var java = require(__dirname + "/lang/java/java_template.js");
 var objc = require(__dirname + "/lang/objc/objc_template.js");
 var python = require(__dirname + "/lang/python/python_template.js");
 var ruby = require(__dirname + "/lang/ruby/ruby_template.js");
-var swift3 = require(__dirname + "/lang/swift3/swift_template.js");
+var swift4 = require(__dirname + "/lang/swift4/swift_template.js");
 var csharp = require(__dirname + "/lang/csharp/csharp_template.js");
 var elixir = require(__dirname + "/lang/elixir/elixir_template.js");
 var kotlin = require(__dirname + "/lang/kotlin/kotlin_template.js");
@@ -26,7 +26,7 @@ console.log("Compile Languages ...");
 java.compile(uni2json,zg2uni,__dirname + "/output/java/com/comquas/rabbit/Rabbit.java");
 js.compile(uni2json,zg2uni,__dirname + "/output/javascript/rabbit.js");
 objc.compile(uni2json,zg2uni,__dirname + "/output/objective-c/Rabbit.m");
-swift3.compile(uni2json,zg2uni,__dirname + "/output/swift3/Rabbit.swift");
+swift4.compile(uni2json,zg2uni,__dirname + "/output/swift4/Rabbit.swift");
 php.compile(uni2json,zg2uni, version, __dirname + "/output/php/Rabbit.php");
 python.compile(uni2json,zg2uni,__dirname + "/output/python/Rabbit.py");
 ruby.compile(uni2json,zg2uni,__dirname + "/output/ruby/rabbit.rb");
@@ -40,7 +40,7 @@ console.log("Moving To Package ...");
 copy(__dirname + "/output/ruby/rabbit.rb",path.resolve(__dirname + "/../Packages/ruby/lib/rabbit.rb")); //Ruby
 copy(__dirname + "/output/php/Rabbit.php",path.resolve(__dirname + "/../Packages/PHP/src/Rabbit.php")); //PHP
 copy(__dirname + "/output/objective-c/Rabbit.m",path.resolve(__dirname + "/../Packages/Objc/Classes/Rabbit.m")); //objc
-copy(__dirname + "/output/swift3/Rabbit.swift",path.resolve(__dirname + "/../Packages/Swift/Classes/Rabbit.swift")); //swift
+copy(__dirname + "/output/swift4/Rabbit.swift",path.resolve(__dirname + "/../Packages/Swift/Classes/Rabbit.swift")); //swift
 copy(__dirname + "/output/elixir/Rabbit.ex",path.resolve(__dirname + "/../Packages/Elixir/lib/rabbit.ex")); //elixir
 copy(__dirname + "/output/go/rabbit.go",path.resolve(__dirname + "/../Packages/Go/rabbit.go")); //elixir
 
