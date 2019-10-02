@@ -320,6 +320,10 @@ function uni2zg(output) {
     {
       "from": "\u102C([\u107B\u1066])\u1037",
       "to": "\u102C$1\u1094"
+    },
+    {
+        "from": "\u1047((?=[\u1000-\u1021]\u1039)|(?=[\u102c-\u1030\u1032\u1036-\u1038\u103c\u103d]))",
+        "to": "\u101b"
     }
 ]
 ;
@@ -791,6 +795,10 @@ function zg2uni(output) {
     {
         "from": "\u1036\u103d",
         "to": "\u103d\u1036"
+    },
+    {
+        "from": "\u1047((?=[\u1000-\u1021]\u103a)|(?=[\u102c-\u1030\u1032\u1036-\u1038\u103d\u103e]))",
+        "to": "\u101b"
     }
 ];
   return replace_with_rule(rule,output);
