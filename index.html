@@ -38,6 +38,8 @@
     <div id="textContainer">
     <section id="buttons">
         <input type="button" value="Clear Text" onclick="clearText()">
+        <input type="button" value="Copy Zawgyi" onclick="copyZawgyi()">
+        <input type="button" value="Copy Unicode" onclick="copyUnicode()">
     </section>
   </div>
 	<footer>
@@ -90,6 +92,29 @@ function onchangeHandler(textField,tochangeField,toconv) {
     
 }
 
+function copyZawgyi() {
+  /* Get the text field */
+  var copyText = document.getElementById("zawgyi");
+
+  /* Select the text field */
+  copyText.select(); 
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+}
+
+function copyUnicode() {
+  /* Get the text field */
+  var copyText = document.getElementById("unicode");
+
+  /* Select the text field */
+  copyText.select(); 
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+}
 
 
 </script>
