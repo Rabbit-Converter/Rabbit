@@ -1,0 +1,20 @@
+exports.compile = function(uni2zg,zg2uni,path) {
+  
+  var fs = require('fs');
+  
+  var template = fs.readFileSync(__dirname + "/rabbit_template.dart");
+  template = template + "";//for make sure string
+  template = template.replace("{{UNI2ZG}}",clear(uni2zg));
+  template = template.replace("{{ZG2UNI}}",clear(zg2uni));  
+  fs.writeFileSync(path,template);
+}
+
+function clear(json) {
+  json = json + "";//make sure for string
+  json = json.replace('"([^\\u1040-\\u1049])\\u1040$"', 'r"([^\\u1040-\\u1049])\\u1040$"');
+  json = json.replace(/\$1/g,"#1");
+  json = json.replace(/\$2/g,"#2");
+  json = json.replace(/\$3/g,"#3");
+  json = json.replace(/\$4/g,"#4");
+  return json;
+}
