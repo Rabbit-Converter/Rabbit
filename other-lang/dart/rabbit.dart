@@ -1,5 +1,7 @@
-String uni2zg(String output) {
-  List<Map<String, String>> rules = [
+class Rabbit {
+
+  static String uni2zg(String output) {
+    List<Map<String, String>> rules = [
     {
         "from": "\u1004\u103a\u1039",
         "to": "\u1064"
@@ -11,10 +13,6 @@ String uni2zg(String output) {
     {
         "from": "\u102b\u103a",
         "to": "\u105a"
-    },
-    {
-        "from": "\u100b\u1039\u100c",
-        "to": "\u1092"
     },
     {
         "from": "\u102d\u1036",
@@ -95,6 +93,10 @@ String uni2zg(String output) {
     {
         "from": "\u1039\u100b",
         "to": "\u106c"
+    },
+    {
+        "from": "\u100b\u1039\u100c",
+        "to": "\u1092"
     },
     {
         "from": "\u1039\u100c",
@@ -189,10 +191,6 @@ String uni2zg(String output) {
         "to": "\u1091"
     },
     {
-        "from": "\u100b\u1039\u100c",
-        "to": "\u1092"
-    },
-    {
         "from": "\u100b\u1039\u100b",
         "to": "\u1097"
     },
@@ -257,7 +255,7 @@ String uni2zg(String output) {
         "to": "#1#2#3\u1034"
     },
     {
-        "from": "([\u100a\u1020])\u103d",
+        "from": "([\u100a\u1020\u1009])\u103d",
         "to": "#1\u1087"
     },
     {
@@ -322,11 +320,11 @@ String uni2zg(String output) {
     }
 ]
 ;
-  return replace_with_rule(rules, output);
-}
+    return Rabbit.replace_with_rule(rules, output);
+  }
 
-String zg2uni(String output) {
-  List<Map<String, String>> rules = [
+  static String zg2uni(String output) {
+    List<Map<String, String>> rules = [
     {
         "from" : "([\u102D\u102E\u103D\u102F\u1037\u1095])\\1+",
         "to" : "#1"
@@ -496,11 +494,15 @@ String zg2uni(String output) {
         "to": "\u1064\u103B"
     },
     {
-        "from": "(\u1031)?([\u1000-\u1021\u1040-\u1049])\u1064",
-        "to": "\u1004\u103a\u1039#1#2"
+        "from": "\u103c([\u1000-\u1021])(\u1064|\u108b)",
+        "to": "#1\u103c#2"
     },
     {
-        "from": "(\u1031)?([\u1000-\u1021])(\u103b)?\u108b",
+        "from": "(\u1031)?([\u1000-\u1021\u1040-\u1049])(\u103c)?\u1064",
+        "to": "\u1004\u103a\u1039#1#2#3"
+    },
+    {
+        "from": "(\u1031)?([\u1000-\u1021])(\u103b|\u103c)?\u108b",
         "to": "\u1004\u103a\u1039#1#2#3\u102d"
     },
     {
@@ -508,8 +510,8 @@ String zg2uni(String output) {
         "to": "\u1004\u103a\u1039#1#2#3\u102e"
     },
     {
-        "from": "(\u1031)?([\u1000-\u1021])\u108d",
-        "to": "\u1004\u103a\u1039#1#2\u1036"
+        "from": "(\u1031)?([\u1000-\u1021])(\u103b)?\u108d",
+        "to": "\u1004\u103a\u1039#1#2#3\u1036"
     },
     {
         "from": "\u108e",
@@ -796,17 +798,18 @@ String zg2uni(String output) {
         "to": "\u101b"
     }
 ];
-  return replace_with_rule(rules, output);
-}
+    return Rabbit.replace_with_rule(rules, output);
+  }
 
-String replace_with_rule(List<Map<String, String>> rules, String input) {
-  rules.forEach((rule) {
-    input = input.replaceAllMapped(RegExp(rule["from"]), (match1) {
-      return rule["to"].replaceAllMapped(RegExp(r"#(\d{1})"), (match2) {
-        var t = match1.group(int.parse(match2.group(1)));
-        return t == null ? "" : t;
+  static String replace_with_rule(List<Map<String, String>> rules, String input) {
+    rules.forEach((rule) {
+      input = input.replaceAllMapped(RegExp(rule["from"]), (match1) {
+        return rule["to"].replaceAllMapped(RegExp(r"#(\d{1})"), (match2) {
+          var t = match1.group(int.parse(match2.group(1)));
+          return t == null ? "" : t;
+        });
       });
     });
-  });
-  return input;
+    return input;
+  }
 }
