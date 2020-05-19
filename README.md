@@ -41,6 +41,9 @@ You can get build result under the `output` folder.
 
 ## Changelog
 
+### 19/05/2020
+- support typescript
+
 ### 11/08/2019
 - add go lang
 

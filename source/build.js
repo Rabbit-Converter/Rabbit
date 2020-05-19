@@ -18,6 +18,7 @@ var elixir = require(__dirname + "/lang/elixir/elixir_template.js");
 var kotlin = require(__dirname + "/lang/kotlin/kotlin_template.js");
 var go = require(__dirname + "/lang/go/go_template.js");
 var dart = require(__dirname + "/lang/dart/dart_template.js");
+var typescript = require(__dirname + "/lang/typescript/typescript_template.js");
 //rule
 var uni2json = fs.readFileSync(__dirname + "/rule/uni2zg.json","utf8");
 var zg2uni = fs.readFileSync(__dirname + "/rule/zg2uni.json","utf8");
@@ -36,7 +37,7 @@ elixir.compile(uni2json,zg2uni,__dirname + "/output/elixir/Rabbit.ex");
 kotlin.compile(uni2json,zg2uni,__dirname + "/output/kotlin/Rabbit.kt");
 go.compile(uni2json,zg2uni,__dirname + "/output/go/rabbit.go");
 dart.compile(uni2json,zg2uni,__dirname + "/output/dart/rabbit.dart");
-
+typescript.compile(uni2json,zg2uni,__dirname + "/output/typescript/rabbit.ts");
 console.log("Moving To Package ...");
 //time to move to Packages
 copy(__dirname + "/output/ruby/rabbit.rb",path.resolve(__dirname + "/../Packages/ruby/lib/rabbit.rb")); //Ruby
