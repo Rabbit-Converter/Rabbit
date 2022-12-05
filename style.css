@@ -44,7 +44,7 @@ textarea {
   text-align: left;
 }
 
-#textContainer {
+#textContainer, .textContainer, #ads {
   text-align: center;
 }
 
