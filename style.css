@@ -34,8 +34,6 @@ footer {
 }
 
 textarea {
-  max-width: 100%;
-  min-width: 100%;
   min-height: 300px;
   padding: 10px;
   line-height: 1.8em;
@@ -48,17 +46,27 @@ textarea {
   text-align: center;
 }
 
-#Unicode {
+#UnicodeSection {
   display: inline-block;
   width: 48%;
   padding-left: 10px;
   font-family: "Noto Sans Myanmar", "Pyidaungsu";
 }
 
-#Zawgyi {
+#UnicodeSection textarea{
+  width: 95%;
+  font-family: "Noto Sans Myanmar", "Pyidaungsu";
+}
+
+#ZawgyiSection {
   display: inline-block;
   width: 48%;
   padding-right: 10px;
+  font-family: "Noto Sans Zawgyi";
+}
+
+#ZawgyiSection textarea {
+  width: 95%;
   font-family: "Noto Sans Zawgyi";
 }
 
