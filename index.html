@@ -1,128 +1,98 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="my">
 <head>
-  <title>Rabbit:: Zawgyi to Unicode, Unicode to Zawgyi Converter</title>
-  <meta name="description" content="Zawgyi to Unicode, Unicode to Zawgyi Converter">
-  <meta name="keywords" content="Rabbit,Zawgyi,Unicode,Converter,Convert">
-	
-  <meta name="author" content="Rabbit">
-	<meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="rabbit.js"></script>
-	<link rel="stylesheet" href="style.css?v=1.0.2"/>
-    <script type="text/javascript">
-      function clearText() {
-        document.getElementById("unicode").value = "";
-        document.getElementById("zawgyi").value = ""
-      }
-
-  </script>
+    <title>Rabbit:: Zawgyi to Unicode, Unicode to Zawgyi Converter</title>
+    <meta name="description" content="Zawgyi to Unicode, Unicode to Zawgyi Converter">
+    <meta name="keywords" content="Rabbit, Zawgyi, Unicode, Converter, Convert">
+    <meta name="author" content="Rabbit">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="rabbit.js"></script>
+    <link rel="stylesheet" href="style.css?v=1.0.2">
 </head>
 <body>
-
-<div id="container">
-	<header>
-		<img src="rabbit_100.png">
-		<h2>Rabbit:: Zawgyi to Unicode, Unicode to Zawgyi Converter</h2>
-	</header>
-  <br/>
-  
-    <div class="textContainer">
-
-        <section id="Unicode">
-            <h3>Unicode</h3>
-            <textarea id="unicode" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ္ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေး ဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။</textarea>
-        </section>
+<div class="container">
+    <header>
+        <img src="rabbit_100.png" alt="Rabbit Logo">
+        <h1>Rabbit:: Zawgyi to Unicode, Unicode to Zawgyi Converter</h1>
+    </header>
+    
+    <main>
+        <div class="text-container">
+            <section class="input-section">
+                <h2>Unicode</h2>
+                <textarea id="unicode" aria-label="Unicode Text" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ္ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေး ဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။</textarea>
+            </section>
+            
+            <section class="input-section">
+                <h2>Zawgyi</h2>
+                <textarea id="zawgyi" aria-label="Zawgyi Text" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ္မွ ဉာဏ္ႀကီးရွင္သည္ အာယုဝၯနေဆးၫႊန္းစာကို ဇလြန္ေဈးေဘး ဗာဒံပင္ထက္ အဓိ႒ာန္လ်က္ ဂဃနဏဖတ္ခဲ့သည္။</textarea>
+            </section>
+        </div>
         
-        <section id="Zawgyi">
-            <h3>Zawgyi</h3>
-            <textarea id="zawgyi" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ္မွ ဉာဏ္ႀကီးရွင္သည္ အာယုဝၯနေဆးၫႊန္းစာကို ဇလြန္ေဈးေဘး ဗာဒံပင္ထက္ အဓိ႒ာန္လ်က္ ဂဃနဏဖတ္ခဲ့သည္။</textarea>
-        </section>
-    </div>
-    <div class="textContainer">
-    <section id="buttons">
-        <input type="button" value="Clear Text" onclick="clearText()">
-        <input type="button" value="Copy Zawgyi" onclick="copyZawgyi()">
-        <input type="button" value="Copy Unicode" onclick="copyUnicode()">
-    </section>
-  </div>
-	<br/>
-	
-	<footer>
-		Found a bug ? Please , open <a href="https://github.com/Rabbit-Converter/Rabbit/issues/new">new issue</a>.
-	</footer>
+        <div class="button-container">
+            <button type="button" onclick="clearText()">Clear Text</button>
+            <button type="button" onclick="copyText('unicode')">Copy Unicode</button>
+            <button type="button" onclick="copyText('zawgyi')">Copy Zawgyi</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Found a bug? Please open a <a href="https://github.com/Rabbit-Converter/Rabbit/issues/new">new issue</a>.</p>
+    </footer>
 </div>
 
 <script>
+let textFieldInFocus = null;
 
-
-var textFieldInFocus;
-function handleOnFocus(form_element)
-{
-   textFieldInFocus = form_element;
-}
-function handleOnBlur()
-{
-   textFieldInFocus = null;
+function handleOnFocus(element) {
+    textFieldInFocus = element;
 }
 
-var unicode = document.getElementById("unicode");
-var zawgyi = document.getElementById("zawgyi");
+function handleOnBlur() {
+    textFieldInFocus = null;
+}
 
-onchangeHandler(unicode,zawgyi,"uni2zg");
-onchangeHandler(zawgyi,unicode,"zg2uni");
+function clearText() {
+    document.getElementById("unicode").value = "";
+    document.getElementById("zawgyi").value = "";
+}
 
-function converter(textField,tochangeField,toconv) {
-    if(tochangeField != textFieldInFocus) {
-        if(toconv == "uni2zg") {
-              tochangeField.value = Rabbit.uni2zg(textField.value);
-        }
-        else {
-             tochangeField.value = Rabbit.zg2uni(textField.value);
-        }
+function copyText(id) {
+    const copyText = document.getElementById(id);
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value).then(() => {
+        // Optionally, show a success message
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
+    });
+}
+
+function converter(textField, toChangeField, toConv) {
+    if (toChangeField !== textFieldInFocus) {
+        toChangeField.value = toConv === "uni2zg" 
+            ? Rabbit.uni2zg(textField.value)
+            : Rabbit.zg2uni(textField.value);
     }
 }
 
-function onchangeHandler(textField,tochangeField,toconv) {
-    
-    if (textField.addEventListener) {
-      textField.addEventListener('input', function() {
-          converter(textField,tochangeField,toconv);
-      }, false);
-    } else if (textField.attachEvent) {
-      textField.attachEvent('onpropertychange', function() {
-        // IE
-          converter(textField,tochangeField,toconv);
-      });
-    }
-    
+function setupConverter() {
+    const unicode = document.getElementById("unicode");
+    const zawgyi = document.getElementById("zawgyi");
+
+    [unicode, zawgyi].forEach(field => {
+        field.addEventListener('input', () => {
+            if (field === unicode) {
+                converter(unicode, zawgyi, "uni2zg");
+            } else {
+                converter(zawgyi, unicode, "zg2uni");
+            }
+        });
+    });
 }
 
-function copyZawgyi() {
-  /* Get the text field */
-  var copyText = document.getElementById("zawgyi");
-
-  /* Select the text field */
-  copyText.select(); 
-  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-
-  /* Copy the text inside the text field */
-  document.execCommand("copy");
-}
-
-function copyUnicode() {
-  /* Get the text field */
-  var copyText = document.getElementById("unicode");
-
-  /* Select the text field */
-  copyText.select(); 
-  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-
-  /* Copy the text inside the text field */
-  document.execCommand("copy");
-}
-
-
+document.addEventListener('DOMContentLoaded', setupConverter);
 </script>
 </body>
 </html>
