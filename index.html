@@ -11,36 +11,34 @@
     <link rel="stylesheet" href="style.css?v=1.0.2">
 </head>
 <body>
-<div class="container">
-    <header>
-        <img src="rabbit_100.png" alt="Rabbit Logo">
-        <h1>Rabbit:: Zawgyi to Unicode, Unicode to Zawgyi Converter</h1>
-    </header>
-    
-    <main>
-        <div class="text-container">
-            <section class="input-section">
-                <h2>Unicode</h2>
-                <textarea id="unicode" aria-label="Unicode Text" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ္ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေး ဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။</textarea>
+    <div id="container">
+        <header>
+            <img src="rabbit_100.png">
+            <h2>Rabbit:: Zawgyi to Unicode, Unicode to Zawgyi Converter</h2>
+        </header>
+      <br/>
+        <div class="textContainer">
+            <section id="UnicodeSection">
+                <h3>Unicode</h3>
+                <textarea id="unicode" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ္ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေး ဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။</textarea>
             </section>
-            
-            <section class="input-section">
-                <h2>Zawgyi</h2>
-                <textarea id="zawgyi" aria-label="Zawgyi Text" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ္မွ ဉာဏ္ႀကီးရွင္သည္ အာယုဝၯနေဆးၫႊန္းစာကို ဇလြန္ေဈးေဘး ဗာဒံပင္ထက္ အဓိ႒ာန္လ်က္ ဂဃနဏဖတ္ခဲ့သည္။</textarea>
+            <section id="ZawgyiSection">
+                <h3>Zawgyi</h3>
+                <textarea id="zawgyi" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ္မွ ဉာဏ္ႀကီးရွင္သည္ အာယုဝၯနေဆးၫႊန္းစာကို ဇလြန္ေဈးေဘး ဗာဒံပင္ထက္ အဓိ႒ာန္လ်က္ ဂဃနဏဖတ္ခဲ့သည္။</textarea>
             </section>
         </div>
-        
-        <div class="button-container">
-            <button type="button" onclick="clearText()">Clear Text</button>
-            <button type="button" onclick="copyText('unicode')">Copy Unicode</button>
-            <button type="button" onclick="copyText('zawgyi')">Copy Zawgyi</button>
-        </div>
-    </main>
-    
-    <footer>
-        <p>Found a bug? Please open a <a href="https://github.com/Rabbit-Converter/Rabbit/issues/new">new issue</a>.</p>
-    </footer>
-</div>
+        <div class="textContainer">
+        <section id="buttons">
+            <input type="button" value="Clear Text" onclick="clearText()">
+            <input type="button" value="Copy Unicode" onclick="copyText('unicode')">
+        <input type="button" value="Copy Zawgyi" onclick="copyText('zawgyi')">
+        </section>
+      </div>
+        <br/>
+        <footer>
+            Found a bug ? Please , open <a href="https://github.com/Rabbit-Converter/Rabbit/issues/new">new issue</a>.
+        </footer>
+    </div>
 
 <script>
 let textFieldInFocus = null;
@@ -67,6 +65,8 @@ function copyText(id) {
     }).catch(err => {
         console.error('Failed to copy text: ', err);
     });
+    window.getSelection().removeAllRanges();
+    copyText.blur();
 }
 
 function converter(textField, toChangeField, toConv) {
