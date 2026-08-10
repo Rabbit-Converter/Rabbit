@@ -9,6 +9,12 @@ Todo
 - [x] Ruby
 - [x] C#
 - [x] Kotlin
+- [x] C++
+
+## For C++
+
+- compile `cplusplus/Rabbit.cpp` with C++11 or newer and include `cplusplus/Rabbit.h`
+- input and output strings use UTF-8
 
 ## For Java
 

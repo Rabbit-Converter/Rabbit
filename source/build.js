@@ -19,6 +19,7 @@ var kotlin = require(__dirname + "/lang/kotlin/kotlin_template.js");
 var go = require(__dirname + "/lang/go/go_template.js");
 var dart = require(__dirname + "/lang/dart/dart_template.js");
 var typescript = require(__dirname + "/lang/typescript/typescript_template.js");
+var cplusplus = require(__dirname + "/lang/cplusplus/cplusplus_template.js");
 //rule
 var uni2json = fs.readFileSync(__dirname + "/rule/uni2zg.json","utf8");
 var zg2uni = fs.readFileSync(__dirname + "/rule/zg2uni.json","utf8");
@@ -38,6 +39,7 @@ kotlin.compile(uni2json,zg2uni,__dirname + "/output/kotlin/Rabbit.kt");
 go.compile(uni2json,zg2uni,__dirname + "/output/go/rabbit.go");
 dart.compile(uni2json,zg2uni,__dirname + "/output/dart/rabbit.dart");
 typescript.compile(uni2json,zg2uni,__dirname + "/output/typescript/rabbit.ts");
+cplusplus.compile(uni2json,zg2uni,__dirname + "/output/cplusplus");
 console.log("Moving To Package ...");
 //time to move to Packages
 copy(__dirname + "/output/ruby/rabbit.rb",path.resolve(__dirname + "/../Packages/ruby/lib/rabbit.rb")); //Ruby
@@ -80,10 +82,12 @@ copy(__dirname + "/res/sample.json", path.resolve(__dirname + "/../Packages/Elix
 console.log("Done.");
 
 function copy(from,to) {
+  fs.mkdirSync(path.dirname(to), { recursive: true });
   fs.createReadStream(from).pipe(fs.createWriteStream(to));
 }
 
 function copyWithCompletion(from,to,callback) {
+	fs.mkdirSync(path.dirname(to), { recursive: true });
 	var stream =fs.createReadStream(from);
 	stream.pipe(fs.createWriteStream(to));
 	
