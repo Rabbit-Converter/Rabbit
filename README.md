@@ -39,7 +39,26 @@ node build.js
 
 You can get build result under the `output` folder.
 
+## Examples
+
+### C++
+
+```cpp
+#include "Rabbit.h"
+#include <iostream>
+
+int main() {
+    std::string uni = "မင်္ဂလာပါ";
+    std::string zg = rabbit::uni2zg(uni);
+    std::cout << zg << std::endl;
+    return 0;
+}
+```
+
 ## Changelog
+
+### 10/08/2026
+- add C++
 
 ### 19/05/2020
 - support typescript
